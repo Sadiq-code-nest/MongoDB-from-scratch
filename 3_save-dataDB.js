@@ -35,7 +35,6 @@ const connectDB = async () => {
     }
 }
 
-
 app.get('/', (req, res) => res.send('success'));
 app.post('/student', async (req, res) => {
     try {

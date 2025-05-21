@@ -1,3 +1,9 @@
+// / POST: products create a product
+// GET:-/products Return all the products
+// GET:-/products/:id return a specific product
+// PUT: /products/:id update a product based on id
+// DELETE: /products/: id delete a product based on-id
+
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -53,7 +59,43 @@ app.post('/student', async (req, res) => {
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
-})
+});
+
+app.get('/student', async (req, res) => {
+    try {
+        const students = await student.find()  /*.limit(1);*/
+        if (students) {
+            res.send(students);
+        } else { res.send('Data Not Found') }
+    } catch (error) {
+        res.send({ msg: error.message })
+    }
+});
+
+
+// access with id 
+//Select -- for specific record
+
+app.get('/student/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        // const students = await student.find({ _id: id }).select({ Name: 1, _id: 0 });
+        // Using findOne()
+        const students = await student.findOne({ _id: id }, { Name: 1, _id: 0 });
+        res.send(students);
+
+        // if (students) {
+        //     res.send(students);
+        // } else { res.send('Data Not Found') 
+        // }
+
+    } catch (error) {
+        res.send({ msg: error.message })
+    }
+});
+
+
+
 app.listen(port, async () => {
     console.log('mongoDB is Fun')
     await connectDB();
