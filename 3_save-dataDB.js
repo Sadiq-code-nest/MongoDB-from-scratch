@@ -49,6 +49,26 @@ app.post('/student', async (req, res) => {
             }
         );
         const studentData = await newStudent.save();
+
+        /* // Insert Many documents from here
+                const studentData = await student.insertMany([
+                    {
+                        Name: "nupur",
+                        Roll: 87,
+                        Company: "shikho",
+                        Future_Goal: "BCS Cadre"
+                    },
+                    {
+                        Name: "sakib",
+                        Roll: 62,
+                        Company: "GP",
+                        Future_Goal: "Google"
+        
+                    }
+                ]);
+        
+        */
+
         res.status(201).send({ studentData })
     } catch (error) {
         res.status(500).send({ message: error.message });
