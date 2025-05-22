@@ -77,9 +77,6 @@ app.get('/student', async (req, res) => {
             students = await student.find();
         }
 
-
-
-
         if (students) {
             res.status(200).send({
                 success: true,
