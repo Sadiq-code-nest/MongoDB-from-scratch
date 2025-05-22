@@ -65,7 +65,13 @@ app.post('/student', async (req, res) => {
 app.get('/student', async (req, res) => {
     try {
         const priceOfMobile = req.query.Phone_Price;
-        const students = await student.find({ Phone_Price: { $gt: priceOfMobile } });
+        let students;
+        if (priceOfMobile) {
+            students = await student.find({ Phone_Price: { $gt: priceOfMobile } });
+        } else {
+            students = await student.find();
+        }
+
         // const students = await student.find();
         // const students = await student.find({ CGPA: { $gt: 3.92 } });
         // const students = await student.find({ Phone_Price: { $eq: 78000 } });
