@@ -1,8 +1,6 @@
-// / POST: products create a product
-// GET:-/products Return all the products
-// GET:-/products/:id return a specific product
 // PUT: /products/:id update a product based on id
 // DELETE: /products/: id delete a product based on-id
+//Following next
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -39,8 +37,9 @@ const connectDB = async () => {
         process.exit(1);
     }
 }
-
+// GET:-/products Return all the data
 app.get('/', (req, res) => res.send('success'));
+// / POST:   create a new data
 app.post('/student', async (req, res) => {
     try {
         // Get data from request body
@@ -78,6 +77,7 @@ app.get('/student', async (req, res) => {
 });
 
 // access with id 
+// GET:-/products/:id return a specific data
 app.get('/student/:id', async (req, res) => {
     try {
         const id = req.params.id;
