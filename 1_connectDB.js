@@ -15,7 +15,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/test')
 
 */
 
-
 // Connect with Async await
 const connectDB = async () => {
     try {
@@ -27,8 +26,7 @@ const connectDB = async () => {
         process.exit(1);
     }
 }
-
-
+//Home route
 app.get('/', (req, res) => res.send('success'));
 app.listen(port, async () => {
     console.log('mongoDB is Fun')
