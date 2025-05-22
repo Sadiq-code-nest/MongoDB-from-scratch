@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const port = 4001;
 
-//Create student Schema
+//Make newly student Schema
 const studentSchema = new mongoose.Schema(
     {
         Name: String,
@@ -19,7 +19,7 @@ const studentSchema = new mongoose.Schema(
         }
     }
 )
-//Create student model
+//Create mongoose model named student
 const student = mongoose.model("student", studentSchema);
 
 // Connect DB with Async await
